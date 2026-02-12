@@ -1,0 +1,29 @@
+# Build directories
+build/
+out/
+cmake-build-*/
+
+# User-specific CMake presets
+CMakeUserPresets.json
+
+# Static analysis cache (clangd)
+.cache/
+
+# IDE / editor files
+.vs/
+.idea/
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.bak
+*.swp
+*~
+*.log
+
+# OS generated files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
