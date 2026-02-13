@@ -4,38 +4,14 @@
 [![codecov](https://codecov.io/gh/cpp-best-practices/cmake_template/branch/main/graph/badge.svg)](https://codecov.io/gh/cpp-best-practices/cmake_template)
 [![CodeQL](https://github.com/cpp-best-practices/cmake_template/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/cpp-best-practices/cmake_template/actions/workflows/codeql-analysis.yml)
 
-## About cmake_template
+## cmake_template_redux
 
-This is a C++ Best Practices GitHub template for getting up and running with C++ quickly.
+This is a stripped down version of the C++ template it is forked from (https://github.com/cpp-best-practices/cmake_template).
 
-By default (collectively known as `ENABLE_DEVELOPER_MODE`)
+Some changes:
 
- * Address Sanitizer and Undefined Behavior Sanitizer enabled where possible
- * Warnings as errors
- * clang-tidy and cppcheck static analysis
- * CPM for dependencies
-
-It includes
-
- * a basic CLI example
- * examples for fuzz, unit, and constexpr testing
- * large GitHub action testing matrix
- * WebAssembly build support with automatic GitHub Pages deployment
-
-**Live Demo:** If you enable GitHub Pages in your project created from this template, you'll have a working example like this:
-- Main: [https://cpp-best-practices.github.io/cmake_template/](https://cpp-best-practices.github.io/cmake_template/)
-- Develop: [https://cpp-best-practices.github.io/cmake_template/develop/](https://cpp-best-practices.github.io/cmake_template/develop/)
-
-The `main` branch deploys to the root, `develop` to `/develop/`, and tags to `/tagname/`.
-
-It requires
-
- * cmake
- * a compiler
-
-
-This project gets you started with a simple example of using FTXUI, which happens to also be a game.
-
+ * Moved from Catch2 to GoogleTest. This was because I am already familiar with GoogleTest.
+ * Warnings as errors, but only on code native to this project. There are some warnings which GoogleTest came with and imo this is too strict a setting. I am comfortable with the best practice that code I am producing should not be producing errors by default. Caveats around safe imports of trusted libraries still apply. 
 
 ## Getting Started
 
@@ -53,19 +29,4 @@ setting up your project and committed the changes.
 Now you can clone the project locally and get to work!
 
     git clone https://github.com/<user>/<your_new_repo>.git
-
-## More Details
-
- * [Dependency Setup](README_dependencies.md)
- * [Building Details](README_building.md)
- * [Docker](README_docker.md)
-
-## Testing
-
-See [Catch2 tutorial](https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md)
-
-## Fuzz testing
-
-See [libFuzzer Tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
-
 
