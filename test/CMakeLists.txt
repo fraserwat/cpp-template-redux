@@ -19,7 +19,15 @@ endif()
 
 # ---- Dependencies ----
 
-include(${Catch2_SOURCE_DIR}/extras/Catch.cmake)
+# GoogleTest
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 
 # Provide a simple smoke test to make sure that the CLI works and can display a --help message
 add_test(NAME cli.has_help COMMAND intro --help)
@@ -37,7 +45,7 @@ target_link_libraries(
   PRIVATE myproject::myproject_warnings
           myproject::myproject_options
           myproject::sample_library
-          Catch2::Catch2WithMain)
+)
 
 myproject_configure_linker(tests)
 
@@ -48,69 +56,3 @@ if(WIN32 AND BUILD_SHARED_LIBS)
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:tests> $<TARGET_FILE_DIR:tests>
     COMMAND_EXPAND_LISTS)
 endif()
-
-# automatically discover tests that are defined in catch based test files you can modify the unittests. Set TEST_PREFIX
-# to whatever you want, or use different for different binaries
-catch_discover_tests(
-  tests
-  TEST_PREFIX
-  "unittests."
-  REPORTER
-  XML
-  OUTPUT_DIR
-  .
-  OUTPUT_PREFIX
-  "unittests."
-  OUTPUT_SUFFIX
-  .xml)
-
-# Add a file containing a set of constexpr tests
-add_executable(constexpr_tests constexpr_tests.cpp)
-target_link_libraries(
-  constexpr_tests
-  PRIVATE myproject::myproject_warnings
-          myproject::myproject_options
-          myproject::sample_library
-          Catch2::Catch2WithMain)
-
-myproject_configure_linker(constexpr_tests)
-
-catch_discover_tests(
-  constexpr_tests
-  TEST_PREFIX
-  "constexpr."
-  REPORTER
-  XML
-  OUTPUT_DIR
-  .
-  OUTPUT_PREFIX
-  "constexpr."
-  OUTPUT_SUFFIX
-  .xml)
-
-# Disable the constexpr portion of the test, and build again this allows us to have an executable that we can debug when
-# things go wrong with the constexpr testing
-add_executable(relaxed_constexpr_tests constexpr_tests.cpp)
-target_link_libraries(
-  relaxed_constexpr_tests
-  PRIVATE myproject::myproject_warnings
-          myproject::myproject_options
-          myproject::sample_library
-          Catch2::Catch2WithMain)
-target_compile_definitions(relaxed_constexpr_tests PRIVATE -DCATCH_CONFIG_RUNTIME_STATIC_REQUIRE)
-
-myproject_configure_linker(relaxed_constexpr_tests)
-
-
-catch_discover_tests(
-  relaxed_constexpr_tests
-  TEST_PREFIX
-  "relaxed_constexpr."
-  REPORTER
-  XML
-  OUTPUT_DIR
-  .
-  OUTPUT_PREFIX
-  "relaxed_constexpr."
-  OUTPUT_SUFFIX
-  .xml)

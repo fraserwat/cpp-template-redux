@@ -24,10 +24,6 @@ function(myproject_setup_dependencies)
       "SPDLOG_FMT_EXTERNAL ON")
   endif()
 
-  if(NOT TARGET Catch2::Catch2WithMain)
-    cpmaddpackage("gh:catchorg/Catch2@3.12.0")
-  endif()
-
   if(NOT TARGET CLI11::CLI11)
     cpmaddpackage("gh:CLIUtils/CLI11@2.6.1")
   endif()
