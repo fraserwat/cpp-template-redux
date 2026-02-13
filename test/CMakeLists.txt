@@ -34,6 +34,8 @@ set_target_properties(gtest gtest_main gmock gmock_main
   PROPERTIES
     CXX_CLANG_TIDY ""
     C_CLANG_TIDY ""
+    CXX_CPPCHECK ""
+    C_CPPCHECK ""
 )
 
 include(GoogleTest)
