@@ -1,7 +1,7 @@
 # cmake_template
 
 [![ci](https://github.com/fraserwat/cpp-template-redux/actions/workflows/ci.yml/badge.svg)](https://github.com/fraserwat/cpp-template-redux/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/fraserwat/cpp-template-redux/branch/main/graph/badge.svg)](https://codecov.io/fraserwat/cpp-template-redux)
+[![codecov](https://codecov.io/gh/fraserwat/cpp-template-redux/branch/main/graph/badge.svg)](https://codecov.io/gh/fraserwat/cpp-template-redux)
 [![CodeQL](https://github.com/fraserwat/cpp-template-redux/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/fraserwat/cpp-template-redux/actions/workflows/codeql-analysis.yml)
 
 ## cmake_template_redux
