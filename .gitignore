@@ -1,15 +1,14 @@
-# Build directories
+# Build directories and binary files
 build/
 out/
+out/coverage/*
 cmake-build-*/
+conan-cache/
 
-# User-specific CMake presets
+# User spesific settings
 CMakeUserPresets.json
 
-# Static analysis cache (clangd)
-.cache/
-
-# IDE / editor files
+# IDE files
 .vs/
 .idea/
 .vscode/
@@ -20,10 +19,18 @@ CMakeUserPresets.json
 *.bak
 *.swp
 *~
+_ReSharper*
 *.log
 
-# OS generated files
+# OS Generated Files
 .DS_Store
+.AppleDouble
+.LSOverride
 ._*
 .Spotlight-V100
 .Trashes
+.Trash-*
+$RECYCLE.BIN/
+.TemporaryItems
+ehthumbs.db
+Thumbs.db
