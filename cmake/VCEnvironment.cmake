@@ -1,6 +1,6 @@
 include("${CMAKE_CURRENT_LIST_DIR}/Utilities.cmake")
 
-macro(newsround_cpp_detect_architecture)
+macro(cpp_template_redux_detect_architecture)
   # detect the architecture
   string(TOLOWER "${CMAKE_SYSTEM_PROCESSOR}" CMAKE_SYSTEM_PROCESSOR_LOWER)
   if(CMAKE_SYSTEM_PROCESSOR_LOWER STREQUAL x86 OR CMAKE_SYSTEM_PROCESSOR_LOWER MATCHES "^i[3456]86$")
@@ -25,7 +25,7 @@ macro(newsround_cpp_detect_architecture)
 endmacro()
 
 # Run vcvarsall.bat and set CMake environment variables
-function(newsround_cpp_run_vcvarsall)
+function(cpp_template_redux_run_vcvarsall)
   # if MSVC but VSCMD_VER is not set, which means vcvarsall has not run
   if(MSVC AND "$ENV{VSCMD_VER}" STREQUAL "")
 
@@ -43,7 +43,7 @@ function(newsround_cpp_run_vcvarsall)
 
     if(EXISTS ${VCVARSALL_FILE})
       # detect the architecture
-      newsround_cpp_detect_architecture()
+      cpp_template_redux_detect_architecture()
 
       # run vcvarsall and print the environment variables
       message(STATUS "Running `${VCVARSALL_FILE} ${VCVARSALL_ARCH}` to set up the MSVC environment")

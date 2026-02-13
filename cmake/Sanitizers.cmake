@@ -1,5 +1,5 @@
 function(
-  newsround_cpp_enable_sanitizers
+  cpp_template_redux_enable_sanitizers
   project_name
   ENABLE_SANITIZER_ADDRESS
   ENABLE_SANITIZER_LEAK

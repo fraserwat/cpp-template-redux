@@ -32,4 +32,4 @@ endif()
 
 # run vcvarsall when msvc is used
 include("${CMAKE_CURRENT_LIST_DIR}/VCEnvironment.cmake")
-newsround_cpp_run_vcvarsall()
+cpp_template_redux_run_vcvarsall()

@@ -19,10 +19,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Set the project name and language
 project(
-  newsround_cpp
+  cpp_template_redux
   VERSION 0.0.2
   DESCRIPTION ""
-  HOMEPAGE_URL "https://github.com/fraserwat/newsround-cpp"
+  HOMEPAGE_URL "https://github.com/fraserwat/cpp-template-redux"
   LANGUAGES CXX C)
 
 include(cmake/PreventInSourceBuilds.cmake)
@@ -30,13 +30,13 @@ include(cmake/Emscripten.cmake)
 include(ProjectOptions.cmake)
 
 
-newsround_cpp_setup_options()
+cpp_template_redux_setup_options()
 
-newsround_cpp_global_options()
+cpp_template_redux_global_options()
 include(Dependencies.cmake)
-newsround_cpp_setup_dependencies()
+cpp_template_redux_setup_dependencies()
 
-newsround_cpp_local_options()
+cpp_template_redux_local_options()
 
 # don't know if this should be set globally from here or not...
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
@@ -50,13 +50,13 @@ string(
             8
             GIT_SHORT_SHA)
 
-target_compile_features(newsround_cpp_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
+target_compile_features(cpp_template_redux_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
 
-add_library(newsround_cpp::newsround_cpp_options ALIAS newsround_cpp_options)
-add_library(newsround_cpp::newsround_cpp_warnings ALIAS newsround_cpp_warnings)
+add_library(cpp_template_redux::cpp_template_redux_options ALIAS cpp_template_redux_options)
+add_library(cpp_template_redux::cpp_template_redux_warnings ALIAS cpp_template_redux_warnings)
 
-#add_library(newsround_cpp::newsround_cpp_options INTERFACE IMPORTED)
-#add_library(newsround_cpp::newsround_cpp_warnings INTERFACE IMPORTED)
+#add_library(cpp_template_redux::cpp_template_redux_options INTERFACE IMPORTED)
+#add_library(cpp_template_redux::cpp_template_redux_warnings INTERFACE IMPORTED)
 
 # Adding the src:
 add_subdirectory(src)
@@ -96,11 +96,11 @@ include(cmake/PackageProject.cmake)
 
 # Add other targets that you want installed here, by default we just package the one executable
 # we know we want to ship
-newsround_cpp_package_project(
+cpp_template_redux_package_project(
   TARGETS
   intro
-  newsround_cpp_options
-  newsround_cpp_warnings
+  cpp_template_redux_options
+  cpp_template_redux_warnings
   # FIXME: this does not work! CK
   # PRIVATE_DEPENDENCIES_CONFIGURED project_options project_warnings
 )

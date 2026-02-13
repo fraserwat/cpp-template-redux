@@ -1,5 +1,5 @@
 # Enable cache if available
-function(newsround_cpp_enable_cache)
+function(cpp_template_redux_enable_cache)
   set(CACHE_OPTION
       "ccache"
       CACHE STRING "Compiler cache to be used")

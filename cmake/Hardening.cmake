@@ -1,7 +1,7 @@
 include(CheckCXXCompilerFlag)
 
 macro(
-  newsround_cpp_enable_hardening
+  cpp_template_redux_enable_hardening
   target
   global
   ubsan_minimal_runtime)

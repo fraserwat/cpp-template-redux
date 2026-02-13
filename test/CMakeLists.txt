@@ -9,9 +9,9 @@ project(CmakeConfigPackageTests
 if(PROJECT_IS_TOP_LEVEL OR TEST_INSTALLED_VERSION)
   enable_testing()
 
-  find_package(newsround_cpp CONFIG REQUIRED) # for intro, project_options, ...
+  find_package(cpp_template_redux CONFIG REQUIRED) # for intro, project_options, ...
 
-  if(NOT TARGET newsround_cpp_options)
+  if(NOT TARGET cpp_template_redux_options)
     message(FATAL_ERROR "Required config package not found!")
     return() # be strictly paranoid for Template Janitor github action! CK
   endif()
@@ -43,14 +43,14 @@ include(GoogleTest)
 add_executable(tests tests.cpp)
 target_link_libraries(
   tests
-  PRIVATE newsround_cpp::newsround_cpp_warnings
-          newsround_cpp::newsround_cpp_options
+  PRIVATE cpp_template_redux::cpp_template_redux_warnings
+          cpp_template_redux::cpp_template_redux_options
           GTest::gtest_main
 )
 
 gtest_discover_tests(tests)
 
-newsround_cpp_configure_linker(tests)
+cpp_template_redux_configure_linker(tests)
 
 if(WIN32 AND BUILD_SHARED_LIBS)
   add_custom_command(

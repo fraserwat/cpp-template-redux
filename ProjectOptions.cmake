@@ -7,7 +7,7 @@ include(CheckCXXCompilerFlag)
 include(CheckCXXSourceCompiles)
 
 
-macro(newsround_cpp_supports_sanitizers)
+macro(cpp_template_redux_supports_sanitizers)
   # Emscripten doesn't support sanitizers
   if(EMSCRIPTEN)
     set(SUPPORTS_UBSAN OFF)
@@ -58,110 +58,110 @@ macro(newsround_cpp_supports_sanitizers)
   endif()
 endmacro()
 
-macro(newsround_cpp_setup_options)
-  option(newsround_cpp_ENABLE_HARDENING "Enable hardening" ON)
-  option(newsround_cpp_ENABLE_COVERAGE "Enable coverage reporting" OFF)
+macro(cpp_template_redux_setup_options)
+  option(cpp_template_redux_ENABLE_HARDENING "Enable hardening" ON)
+  option(cpp_template_redux_ENABLE_COVERAGE "Enable coverage reporting" OFF)
   cmake_dependent_option(
-    newsround_cpp_ENABLE_GLOBAL_HARDENING
+    cpp_template_redux_ENABLE_GLOBAL_HARDENING
     "Attempt to push hardening options to built dependencies"
     ON
-    newsround_cpp_ENABLE_HARDENING
+    cpp_template_redux_ENABLE_HARDENING
     OFF)
 
-  newsround_cpp_supports_sanitizers()
+  cpp_template_redux_supports_sanitizers()
 
-  if(NOT PROJECT_IS_TOP_LEVEL OR newsround_cpp_PACKAGING_MAINTAINER_MODE)
-    option(newsround_cpp_ENABLE_IPO "Enable IPO/LTO" OFF)
-    option(newsround_cpp_WARNINGS_AS_ERRORS "Treat Warnings As Errors" OFF)
-    option(newsround_cpp_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" OFF)
-    option(newsround_cpp_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
-    option(newsround_cpp_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" OFF)
-    option(newsround_cpp_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
-    option(newsround_cpp_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
-    option(newsround_cpp_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
-    option(newsround_cpp_ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
-    option(newsround_cpp_ENABLE_CPPCHECK "Enable cpp-check analysis" OFF)
-    option(newsround_cpp_ENABLE_PCH "Enable precompiled headers" OFF)
-    option(newsround_cpp_ENABLE_CACHE "Enable ccache" OFF)
+  if(NOT PROJECT_IS_TOP_LEVEL OR cpp_template_redux_PACKAGING_MAINTAINER_MODE)
+    option(cpp_template_redux_ENABLE_IPO "Enable IPO/LTO" OFF)
+    option(cpp_template_redux_WARNINGS_AS_ERRORS "Treat Warnings As Errors" OFF)
+    option(cpp_template_redux_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" OFF)
+    option(cpp_template_redux_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
+    option(cpp_template_redux_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" OFF)
+    option(cpp_template_redux_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
+    option(cpp_template_redux_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
+    option(cpp_template_redux_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
+    option(cpp_template_redux_ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
+    option(cpp_template_redux_ENABLE_CPPCHECK "Enable cpp-check analysis" OFF)
+    option(cpp_template_redux_ENABLE_PCH "Enable precompiled headers" OFF)
+    option(cpp_template_redux_ENABLE_CACHE "Enable ccache" OFF)
   else()
-    option(newsround_cpp_ENABLE_IPO "Enable IPO/LTO" ON)
-    option(newsround_cpp_WARNINGS_AS_ERRORS "Treat Warnings As Errors" ON)
-    option(newsround_cpp_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" ${SUPPORTS_ASAN})
-    option(newsround_cpp_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
-    option(newsround_cpp_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" ${SUPPORTS_UBSAN})
-    option(newsround_cpp_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
-    option(newsround_cpp_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
-    option(newsround_cpp_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
-    option(newsround_cpp_ENABLE_CLANG_TIDY "Enable clang-tidy" ON)
-    option(newsround_cpp_ENABLE_CPPCHECK "Enable cpp-check analysis" ON)
-    option(newsround_cpp_ENABLE_PCH "Enable precompiled headers" OFF)
-    option(newsround_cpp_ENABLE_CACHE "Enable ccache" ON)
+    option(cpp_template_redux_ENABLE_IPO "Enable IPO/LTO" ON)
+    option(cpp_template_redux_WARNINGS_AS_ERRORS "Treat Warnings As Errors" ON)
+    option(cpp_template_redux_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" ${SUPPORTS_ASAN})
+    option(cpp_template_redux_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
+    option(cpp_template_redux_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" ${SUPPORTS_UBSAN})
+    option(cpp_template_redux_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
+    option(cpp_template_redux_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
+    option(cpp_template_redux_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
+    option(cpp_template_redux_ENABLE_CLANG_TIDY "Enable clang-tidy" ON)
+    option(cpp_template_redux_ENABLE_CPPCHECK "Enable cpp-check analysis" ON)
+    option(cpp_template_redux_ENABLE_PCH "Enable precompiled headers" OFF)
+    option(cpp_template_redux_ENABLE_CACHE "Enable ccache" ON)
   endif()
 
   if(NOT PROJECT_IS_TOP_LEVEL)
     mark_as_advanced(
-      newsround_cpp_ENABLE_IPO
-      newsround_cpp_WARNINGS_AS_ERRORS
-      newsround_cpp_ENABLE_SANITIZER_ADDRESS
-      newsround_cpp_ENABLE_SANITIZER_LEAK
-      newsround_cpp_ENABLE_SANITIZER_UNDEFINED
-      newsround_cpp_ENABLE_SANITIZER_THREAD
-      newsround_cpp_ENABLE_SANITIZER_MEMORY
-      newsround_cpp_ENABLE_UNITY_BUILD
-      newsround_cpp_ENABLE_CLANG_TIDY
-      newsround_cpp_ENABLE_CPPCHECK
-      newsround_cpp_ENABLE_COVERAGE
-      newsround_cpp_ENABLE_PCH
-      newsround_cpp_ENABLE_CACHE)
+      cpp_template_redux_ENABLE_IPO
+      cpp_template_redux_WARNINGS_AS_ERRORS
+      cpp_template_redux_ENABLE_SANITIZER_ADDRESS
+      cpp_template_redux_ENABLE_SANITIZER_LEAK
+      cpp_template_redux_ENABLE_SANITIZER_UNDEFINED
+      cpp_template_redux_ENABLE_SANITIZER_THREAD
+      cpp_template_redux_ENABLE_SANITIZER_MEMORY
+      cpp_template_redux_ENABLE_UNITY_BUILD
+      cpp_template_redux_ENABLE_CLANG_TIDY
+      cpp_template_redux_ENABLE_CPPCHECK
+      cpp_template_redux_ENABLE_COVERAGE
+      cpp_template_redux_ENABLE_PCH
+      cpp_template_redux_ENABLE_CACHE)
   endif()
 
-  newsround_cpp_check_libfuzzer_support(LIBFUZZER_SUPPORTED)
-  if(LIBFUZZER_SUPPORTED AND (newsround_cpp_ENABLE_SANITIZER_ADDRESS OR newsround_cpp_ENABLE_SANITIZER_THREAD OR newsround_cpp_ENABLE_SANITIZER_UNDEFINED))
+  cpp_template_redux_check_libfuzzer_support(LIBFUZZER_SUPPORTED)
+  if(LIBFUZZER_SUPPORTED AND (cpp_template_redux_ENABLE_SANITIZER_ADDRESS OR cpp_template_redux_ENABLE_SANITIZER_THREAD OR cpp_template_redux_ENABLE_SANITIZER_UNDEFINED))
     set(DEFAULT_FUZZER ON)
   else()
     set(DEFAULT_FUZZER OFF)
   endif()
 
-  option(newsround_cpp_BUILD_FUZZ_TESTS "Enable fuzz testing executable" ${DEFAULT_FUZZER})
+  option(cpp_template_redux_BUILD_FUZZ_TESTS "Enable fuzz testing executable" ${DEFAULT_FUZZER})
 
 endmacro()
 
-macro(newsround_cpp_global_options)
-  if(newsround_cpp_ENABLE_IPO)
+macro(cpp_template_redux_global_options)
+  if(cpp_template_redux_ENABLE_IPO)
     include(cmake/InterproceduralOptimization.cmake)
-    newsround_cpp_enable_ipo()
+    cpp_template_redux_enable_ipo()
   endif()
 
-  newsround_cpp_supports_sanitizers()
+  cpp_template_redux_supports_sanitizers()
 
-  if(newsround_cpp_ENABLE_HARDENING AND newsround_cpp_ENABLE_GLOBAL_HARDENING)
+  if(cpp_template_redux_ENABLE_HARDENING AND cpp_template_redux_ENABLE_GLOBAL_HARDENING)
     include(cmake/Hardening.cmake)
     if(NOT SUPPORTS_UBSAN 
-       OR newsround_cpp_ENABLE_SANITIZER_UNDEFINED
-       OR newsround_cpp_ENABLE_SANITIZER_ADDRESS
-       OR newsround_cpp_ENABLE_SANITIZER_THREAD
-       OR newsround_cpp_ENABLE_SANITIZER_LEAK)
+       OR cpp_template_redux_ENABLE_SANITIZER_UNDEFINED
+       OR cpp_template_redux_ENABLE_SANITIZER_ADDRESS
+       OR cpp_template_redux_ENABLE_SANITIZER_THREAD
+       OR cpp_template_redux_ENABLE_SANITIZER_LEAK)
       set(ENABLE_UBSAN_MINIMAL_RUNTIME FALSE)
     else()
       set(ENABLE_UBSAN_MINIMAL_RUNTIME TRUE)
     endif()
-    message("${newsround_cpp_ENABLE_HARDENING} ${ENABLE_UBSAN_MINIMAL_RUNTIME} ${newsround_cpp_ENABLE_SANITIZER_UNDEFINED}")
-    newsround_cpp_enable_hardening(newsround_cpp_options ON ${ENABLE_UBSAN_MINIMAL_RUNTIME})
+    message("${cpp_template_redux_ENABLE_HARDENING} ${ENABLE_UBSAN_MINIMAL_RUNTIME} ${cpp_template_redux_ENABLE_SANITIZER_UNDEFINED}")
+    cpp_template_redux_enable_hardening(cpp_template_redux_options ON ${ENABLE_UBSAN_MINIMAL_RUNTIME})
   endif()
 endmacro()
 
-macro(newsround_cpp_local_options)
+macro(cpp_template_redux_local_options)
   if(PROJECT_IS_TOP_LEVEL)
     include(cmake/StandardProjectSettings.cmake)
   endif()
 
-  add_library(newsround_cpp_warnings INTERFACE)
-  add_library(newsround_cpp_options INTERFACE)
+  add_library(cpp_template_redux_warnings INTERFACE)
+  add_library(cpp_template_redux_options INTERFACE)
 
   include(cmake/CompilerWarnings.cmake)
-  newsround_cpp_set_project_warnings(
-    newsround_cpp_warnings
-    ${newsround_cpp_WARNINGS_AS_ERRORS}
+  cpp_template_redux_set_project_warnings(
+    cpp_template_redux_warnings
+    ${cpp_template_redux_WARNINGS_AS_ERRORS}
     ""
     ""
     ""
@@ -172,66 +172,66 @@ macro(newsround_cpp_local_options)
 
   if(NOT EMSCRIPTEN)
     include(cmake/Sanitizers.cmake)
-    newsround_cpp_enable_sanitizers(
-      newsround_cpp_options
-      ${newsround_cpp_ENABLE_SANITIZER_ADDRESS}
-      ${newsround_cpp_ENABLE_SANITIZER_LEAK}
-      ${newsround_cpp_ENABLE_SANITIZER_UNDEFINED}
-      ${newsround_cpp_ENABLE_SANITIZER_THREAD}
-      ${newsround_cpp_ENABLE_SANITIZER_MEMORY})
+    cpp_template_redux_enable_sanitizers(
+      cpp_template_redux_options
+      ${cpp_template_redux_ENABLE_SANITIZER_ADDRESS}
+      ${cpp_template_redux_ENABLE_SANITIZER_LEAK}
+      ${cpp_template_redux_ENABLE_SANITIZER_UNDEFINED}
+      ${cpp_template_redux_ENABLE_SANITIZER_THREAD}
+      ${cpp_template_redux_ENABLE_SANITIZER_MEMORY})
   endif()
 
-  set_target_properties(newsround_cpp_options PROPERTIES UNITY_BUILD ${newsround_cpp_ENABLE_UNITY_BUILD})
+  set_target_properties(cpp_template_redux_options PROPERTIES UNITY_BUILD ${cpp_template_redux_ENABLE_UNITY_BUILD})
 
-  if(newsround_cpp_ENABLE_PCH)
+  if(cpp_template_redux_ENABLE_PCH)
     target_precompile_headers(
-      newsround_cpp_options
+      cpp_template_redux_options
       INTERFACE
       <vector>
       <string>
       <utility>)
   endif()
 
-  if(newsround_cpp_ENABLE_CACHE)
+  if(cpp_template_redux_ENABLE_CACHE)
     include(cmake/Cache.cmake)
-    newsround_cpp_enable_cache()
+    cpp_template_redux_enable_cache()
   endif()
 
   include(cmake/StaticAnalyzers.cmake)
-  if(newsround_cpp_ENABLE_CLANG_TIDY)
-    newsround_cpp_enable_clang_tidy(newsround_cpp_options ${newsround_cpp_WARNINGS_AS_ERRORS})
+  if(cpp_template_redux_ENABLE_CLANG_TIDY)
+    cpp_template_redux_enable_clang_tidy(cpp_template_redux_options ${cpp_template_redux_WARNINGS_AS_ERRORS})
   endif()
 
-  if(newsround_cpp_ENABLE_CPPCHECK)
-    newsround_cpp_enable_cppcheck(${newsround_cpp_WARNINGS_AS_ERRORS} "" # override cppcheck options
+  if(cpp_template_redux_ENABLE_CPPCHECK)
+    cpp_template_redux_enable_cppcheck(${cpp_template_redux_WARNINGS_AS_ERRORS} "" # override cppcheck options
     )
   endif()
 
-  if(newsround_cpp_ENABLE_COVERAGE)
+  if(cpp_template_redux_ENABLE_COVERAGE)
     include(cmake/Tests.cmake)
-    newsround_cpp_enable_coverage(newsround_cpp_options)
+    cpp_template_redux_enable_coverage(cpp_template_redux_options)
   endif()
 
-  if(newsround_cpp_WARNINGS_AS_ERRORS)
+  if(cpp_template_redux_WARNINGS_AS_ERRORS)
     check_cxx_compiler_flag("-Wl,--fatal-warnings" LINKER_FATAL_WARNINGS)
     if(LINKER_FATAL_WARNINGS)
       # This is not working consistently, so disabling for now
-      # target_link_options(newsround_cpp_options INTERFACE -Wl,--fatal-warnings)
+      # target_link_options(cpp_template_redux_options INTERFACE -Wl,--fatal-warnings)
     endif()
   endif()
 
-  if(newsround_cpp_ENABLE_HARDENING AND NOT newsround_cpp_ENABLE_GLOBAL_HARDENING)
+  if(cpp_template_redux_ENABLE_HARDENING AND NOT cpp_template_redux_ENABLE_GLOBAL_HARDENING)
     include(cmake/Hardening.cmake)
     if(NOT SUPPORTS_UBSAN 
-       OR newsround_cpp_ENABLE_SANITIZER_UNDEFINED
-       OR newsround_cpp_ENABLE_SANITIZER_ADDRESS
-       OR newsround_cpp_ENABLE_SANITIZER_THREAD
-       OR newsround_cpp_ENABLE_SANITIZER_LEAK)
+       OR cpp_template_redux_ENABLE_SANITIZER_UNDEFINED
+       OR cpp_template_redux_ENABLE_SANITIZER_ADDRESS
+       OR cpp_template_redux_ENABLE_SANITIZER_THREAD
+       OR cpp_template_redux_ENABLE_SANITIZER_LEAK)
       set(ENABLE_UBSAN_MINIMAL_RUNTIME FALSE)
     else()
       set(ENABLE_UBSAN_MINIMAL_RUNTIME TRUE)
     endif()
-    newsround_cpp_enable_hardening(newsround_cpp_options OFF ${ENABLE_UBSAN_MINIMAL_RUNTIME})
+    cpp_template_redux_enable_hardening(cpp_template_redux_options OFF ${ENABLE_UBSAN_MINIMAL_RUNTIME})
   endif()
 
 endmacro()
