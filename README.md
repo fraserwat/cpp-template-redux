@@ -1,8 +1,8 @@
 # cmake_template
 
-[![ci](https://github.com/cpp-best-practices/cmake_template/actions/workflows/ci.yml/badge.svg)](https://github.com/cpp-best-practices/cmake_template/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/cpp-best-practices/cmake_template/branch/main/graph/badge.svg)](https://codecov.io/gh/cpp-best-practices/cmake_template)
-[![CodeQL](https://github.com/cpp-best-practices/cmake_template/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/cpp-best-practices/cmake_template/actions/workflows/codeql-analysis.yml)
+[![ci](https://github.com/fraserwat/cpp-template-redux/actions/workflows/ci.yml/badge.svg)](https://github.com/fraserwat/cpp-template-redux/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/fraserwat/cpp-template-redux/branch/main/graph/badge.svg)](https://codecov.io/fraserwat/cpp-template-redux)
+[![CodeQL](https://github.com/fraserwat/cpp-template-redux/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/fraserwat/cpp-template-redux/actions/workflows/codeql-analysis.yml)
 
 ## cmake_template_redux
 
