@@ -29,6 +29,13 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+# Disable static analysis on GoogleTest targets
+set_target_properties(gtest gtest_main gmock gmock_main
+  PROPERTIES
+    CXX_CLANG_TIDY ""
+    C_CLANG_TIDY ""
+)
+
 include(GoogleTest)
 
 add_executable(tests tests.cpp)
