@@ -15,7 +15,10 @@ WORKDIR /app
 COPY . .
 
 # Configure and build the project
-RUN cmake -B build && cmake --build build
+# PACKAGING_MAINTAINER_MODE disables dev-only tools (sanitizers, clang-tidy, etc.)
+# that shouldn't be in a production build
+RUN cmake -B build -Dcpp_template_redux_PACKAGING_MAINTAINER_MODE=ON \
+    && cmake --build build
 
 # Run tests
 RUN ctest --test-dir build --output-on-failure
