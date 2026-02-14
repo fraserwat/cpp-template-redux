@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.28...3.31)
+cmake_minimum_required(VERSION 3.28)
+
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 
 # This template attempts to be "fetch_content"-able
 # so that it works well with tools like CPM or other
