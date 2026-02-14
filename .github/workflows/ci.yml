@@ -206,3 +206,12 @@ jobs:
           name: ${{ runner.os }}-coverage
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./build/coverage.xml
+
+  Docker:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Build Docker image
+        run: docker build -t ${{ github.event.repository.name }} .

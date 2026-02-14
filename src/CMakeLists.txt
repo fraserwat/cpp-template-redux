@@ -1,8 +1,8 @@
-add_executable(intro main.cpp)
+add_executable(compiled_app main.cpp)
 
 target_link_libraries(
-  intro
+  compiled_app
   PRIVATE cpp_template_redux::cpp_template_redux_options
           cpp_template_redux::cpp_template_redux_warnings)
 
-cpp_template_redux_configure_linker(intro)
+cpp_template_redux_configure_linker(compiled_app)
